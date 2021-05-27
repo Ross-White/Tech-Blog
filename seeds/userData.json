@@ -2,17 +2,17 @@
     {
         "name": "Test1",
         "email": "test1@test.com",
-        "password": "User1"
+        "password": "testuser1"
 
     },
     {
         "name": "Test2",
         "email": "test2@test.com",
-        "password": "User2"
+        "password": "testuser2"
     },
     {
         "name": "Test3",
         "email": "test3@test.com",
-        "password": "User3"
+        "password": "testuser3"
     }
 ]
