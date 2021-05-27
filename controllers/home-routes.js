@@ -1,7 +1,11 @@
+const { Post } = require('../models');
+
 const router = require('express').Router();
 
 router.get('/', async (req, res) => {
-    res.render('home');
+    const rawPosts = await Post.findAll();
+    const posts = rawPosts.map(post => post.get({plain: true}));
+    res.render('home', {posts});
 });
 
 router.get('/login', async (req, res) => {
