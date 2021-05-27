@@ -10,30 +10,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-// router.get('/', async (req, res) => {
-//     try {
-//         const rawPosts = await Post.findAll({
-//             include: [
-//                 {
-//                     model: User,
-//                     attributes: ['name'],
-//                 },
-//                 {
-//                     model: Comment,
-//                 },
-//             ],
-//         });
-//         const posts = rawPosts.map((post) => post.get({ plain: true}));
-//         res.render('home', { posts })
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
-
-router.get('/:id', (req, res) => {
-    //Get post by id
-});
-
 router.put('/:id', (req, res) => {
     //Edit post
 });

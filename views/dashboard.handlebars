@@ -1,1 +1,5 @@
-<h2>Dashboard</h2>
+<section>
+    {{#each userPosts as |post| }}
+        {{> post-details}}
+    {{/each}}
+</section>
