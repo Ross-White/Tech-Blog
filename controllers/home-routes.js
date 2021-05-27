@@ -16,8 +16,10 @@ router.get('/signup', async (req, res) => {
     res.render('signup');
 });
 
-router.get('/post', async (req, res) => {
-    res.render('singlePost');
+router.get('/post/:id', async (req, res) => {
+    const rawPost = await Post.findByPk(req.params.id);
+    const post = rawPost.get({plain: true});
+    res.render('singlePost', post);
 });
 
 module.exports = router;
