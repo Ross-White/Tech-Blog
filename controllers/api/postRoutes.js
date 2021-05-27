@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post } = require('../../models');
+const { Post, User, Comment } = require('../../models');
 
 router.post('/', async (req, res) => {
     try {
@@ -10,9 +10,25 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.get('/', (req, res) => {
-    //Get all posts
-});
+// router.get('/', async (req, res) => {
+//     try {
+//         const rawPosts = await Post.findAll({
+//             include: [
+//                 {
+//                     model: User,
+//                     attributes: ['name'],
+//                 },
+//                 {
+//                     model: Comment,
+//                 },
+//             ],
+//         });
+//         const posts = rawPosts.map((post) => post.get({ plain: true}));
+//         res.render('home', { posts })
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
 router.get('/:id', (req, res) => {
     //Get post by id

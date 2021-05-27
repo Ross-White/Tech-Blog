@@ -1,4 +1,5 @@
-{{#each posts}}
-<h2>{{title}}</h2>
-<p>{{body}}</p>
-{{/each}}
+<section>
+    {{#each posts as |post| }}
+    {{> post-details}}
+    {{/each}}
+</section>
