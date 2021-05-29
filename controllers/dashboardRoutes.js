@@ -1,15 +1,16 @@
 const router = require('express').Router();
+const withAuth = require('../utils/auth');
 const { Post, Comment, User } = require('../models');
 
-router.get('/', async (req, res) => {
-    res.render('dashboard');
-});
+// router.get('/', async (req, res) => {
+//     res.render('dashboard');
+// });
 
-router.get('/:id', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         const rawUserPosts = await Post.findAll({
             where: {
-                user_id: req.params.id
+                user_id: req.session.user_id
             },
             include: [
                 {
@@ -21,8 +22,10 @@ router.get('/:id', async (req, res) => {
             ]
         });
         const userPosts = rawUserPosts.map((post) => post.get({ plain: true }));
-        console.log(userPosts);
-        res.render('dashboard', { userPosts });
+        res.render('dashboard', { 
+            userPosts,
+            logged_in: req.session.logged_in,
+         });
     } catch (err) {
         res.status(500).json(err);
     }
