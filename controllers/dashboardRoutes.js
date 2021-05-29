@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, Comment } = require('../models');
+const { Post, Comment, User } = require('../models');
 
 router.get('/', async (req, res) => {
     res.render('dashboard');
@@ -12,6 +12,9 @@ router.get('/:id', async (req, res) => {
                 user_id: req.params.id
             },
             include: [
+                {
+                    model: User,
+                },
                 {
                     model: Comment,
                 },
