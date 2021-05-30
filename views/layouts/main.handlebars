@@ -5,22 +5,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
     <title>Tech Blog</title>
 </head>
 
 <body>
-    <header>
+    <header class="hero">
         <h1>Tech Blog</h1>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/dashboard">Dashboard</a>
-            <a href="/login">Login</a>
-            {{#if logged_in}}
-            <a href="#" id="logout">Logout</a>
-            {{/if}}
+        <nav class="breadcrumb is-right">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                {{#if logged_in}}
+                <li><a href="#" id="logout">Logout</a></li>
+                {{else}}
+                <li><a href="/login">Login</a></li>
+                {{/if}}
+            </ul>
         </nav>
     </header>
-    <main>
+    <main class="container">
         {{{ body }}}
     </main>
     {{#if logged_in}}
