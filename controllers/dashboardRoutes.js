@@ -31,7 +31,7 @@ router.get('/new', async (req, res) => {
     res.render('newPost');
 });
 
-router.get('/edit', async (req, res) => {
+router.get('/edit/:id', async (req, res) => {
     res.render('editPost');
 });
 

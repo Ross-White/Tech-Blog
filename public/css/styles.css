@@ -1,4 +1,8 @@
-.card {
+header {
+    font-size: 32px;
+}
+
+.post-info {
     display: flex;
     flex-direction: row;
     justify-content: space-between;

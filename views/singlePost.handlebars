@@ -1,4 +1,29 @@
-<h2>{{title}}</h2>
-<p>{{body}}</p>
-<p>{{createdAt}}</p>
-<p>{{updatedAt}}</p>
+<div class="card">
+    <header class="card-header">
+        <h2 class="card-header-title is-centered">
+            {{title}}
+        </h2>
+    </header>
+    <div class="card-content">
+        <p class="content">{{body}}</p>
+    </div>
+</div>
+
+{{#if loggedIn}}
+<div class="card">
+    <h3 class="card-header"></h3>
+    <form class="card-body comment-form" id="comment-form">
+
+        <label class="form-label">Comment</label>
+        <input id="comment" name="comment-body" class="form-input" />
+
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
+{{/if}}
+
+{{> comments post.comments}}
+
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{/if}}
