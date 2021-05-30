@@ -1,29 +1,31 @@
 <div class="card">
     <header class="card-header">
         <h2 class="card-header-title is-centered">
-            {{title}}
+            {{post.title}}
         </h2>
     </header>
     <div class="card-content">
-        <p class="content">{{body}}</p>
+        <p class="content">{{post.body}}</p>
     </div>
 </div>
 
-{{#if loggedIn}}
-<div class="card">
-    <h3 class="card-header"></h3>
-    <form class="card-body comment-form" id="comment-form">
+{{#each comments as |comment|}}
+    {{> comments}}
+{{/each}}
 
-        <label class="form-label">Comment</label>
-        <input id="comment" name="comment-body" class="form-input" />
-
-        <button type="submit" class="btn">Submit</button>
-    </form>
-</div>
+{{#if logged_in}}
+<form id="comment-form">
+    <div>
+        <label for="comment">Write comment...</label>
+        <input class="textarea" type="text" id="comment-body" />
+    </div>
+        <div>
+        <button type="submit">Post</button>
+    </div> 
+</form>
 {{/if}}
 
-{{> comments post.comments}}
 
-{{#if loggedIn}}
-<script src="/javascript/comment.js"></script>
+{{#if logged_in}}
+<script src="/js/comments.js"></script>
 {{/if}}

@@ -31,29 +31,26 @@ router.get('/new', withAuth, async (req, res) => {
     res.render('newPost');
 });
 
-router.get('/edit/:id', withAuth, async (req, res) => {
-    try {
-        const rawPost = await Post.findOne({
-            where: {
-                id: req.params.id
+router.get('/edit/:id', async (req, res) => {
+    const rawPost = await Post.findOne({
+        where: {
+            id: req.params.id
+        },
+        include: [
+            {
+                model: Comment,
             },
-            include: [
-                {
-                    model: Comment,
-                },
-                {
-                    model: User,
-                    attributes: ["name"],
-                },
-            ]
-        });
-        console.log(rawPost);
-        const post = rawPost.get({ plain: true });
-        console.log(post);
-        res.render('editPost', post );
-    } catch (err) {
-        res.status(500).json(err);
-    }
+            {
+                model: User,
+                attributes: ["name"],
+            },
+        ]   
+    }); 
+    const post = rawPost.get({plain: true});
+    console.log(post);
+    res.render('editPost',  { 
+    post,
+    logged_in: req.session.logged_in });
 });
 
 
