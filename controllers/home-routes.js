@@ -38,6 +38,7 @@ router.get('/post/:id', async (req, res) => {
         include: [
             {
                 model: Comment,
+                include: [User],
             },
             {
                 model: User,
@@ -48,7 +49,7 @@ router.get('/post/:id', async (req, res) => {
     const post = rawPost.get({plain: true});
     console.log(post);
     res.render('singlePost',  { 
-    post,
+    ...post,
     logged_in: req.session.logged_in });
 });
 

@@ -9,14 +9,14 @@
     </div>
 </div>
 
-{{#each comment}}
+{{#each comments as |comment|}}
     {{> comments}}
 {{/each}}
 
 {{#if logged_in}}
 <form id="comment-form">
     <div>
-        <label for="comment">Write comment...</label>
+        <label for="comment-body">Write comment...</label>
         <input class="textarea" type="text" id="comment-body" />
     </div>
         <div>
