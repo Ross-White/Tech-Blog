@@ -33,7 +33,9 @@ router.get('/signup', async (req, res) => {
 router.get('/post/:id', async (req, res) => {
     const rawPost = await Post.findByPk(req.params.id);
     const post = rawPost.get({plain: true});
-    res.render('singlePost', post);
+    res.render('singlePost',  { 
+        post,
+        logged_in: req.session.logged_in });
 });
 
 module.exports = router;

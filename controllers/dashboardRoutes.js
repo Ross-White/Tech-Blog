@@ -27,12 +27,33 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
-router.get('/new', async (req, res) => {
+router.get('/new', withAuth, async (req, res) => {
     res.render('newPost');
 });
 
-router.get('/edit/:id', async (req, res) => {
-    res.render('editPost');
+router.get('/edit/:id', withAuth, async (req, res) => {
+    try {
+        const rawPost = await Post.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [
+                {
+                    model: Comment,
+                },
+                {
+                    model: User,
+                    attributes: ["name"],
+                },
+            ]
+        });
+        console.log(rawPost);
+        const post = rawPost.get({ plain: true });
+        console.log(post);
+        res.render('editPost', post );
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 
