@@ -1,31 +1,29 @@
-<div class="card">
-    <header class="card-header">
-        <h2 class="card-header-title is-centered">
-            {{post.title}}
-        </h2>
-    </header>
-    <div class="card-content">
-        <p class="content">{{post.body}}</p>
+<form class="edit-post-form">
+    <div class="field">
+        <label for="title">Post Title</label>
+        <div class="control">
+            <input id="title" class="input" name="title" type="text" value="{{title}}"></label>
+        </div>
     </div>
-</div>
+    <div class="field">
+        <label for="content">Post Content</label>
+        <div class="control">
+            <input id="body" class="textarea" name="content" type="text" value="{{body}}">
+        </div>
+    </div>
+    <div class="field is-grouped">
+        <div class="control">
+            <button id="update" type="submit" class="button is-link">Update</button>
+        </div>
+        <div class="control">
+            <button id="delete-btn" type="button" class="button is-link is-light">Delete</button>
+        </div>
+    </div>
+
+</form>
 
 {{#each comments as |comment|}}
-    {{> comments}}
+{{> comments}}
 {{/each}}
 
-{{#if logged_in}}
-<form id="comment-form">
-    <div>
-        <label for="comment">Write comment...</label>
-        <input class="textarea" type="text" id="comment-body" />
-    </div>
-        <div>
-        <button type="submit">Post</button>
-    </div> 
-</form>
-{{/if}}
-
-
-{{#if logged_in}}
-<script src="/js/comments.js"></script>
-{{/if}}
+<script src="/js/editPost.js"></script>
