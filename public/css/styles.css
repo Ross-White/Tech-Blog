@@ -1,5 +1,23 @@
+:root {
+    --primary: rgb(240, 247, 254);
+    --secondary: rgba(13, 17, 27, 0.9);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
 header {
-    font-size: 32px;
+    font-size: 4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--secondary);
+    color: var(--primary);
+    margin-left: 2%;
+    margin-right: 2%;
+    padding: 2%;
 }
 
 .post-info {
@@ -7,4 +25,21 @@ header {
     flex-direction: row;
     justify-content: space-between;
     height: 5vh;
+    border-style: var(--secondary);
+    margin: 1%;
+    font-size: 1rem;
+    align-items: center;
+    padding-left: 5%;
+};
+
+.comment-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 5vh;
+    border-style: var(--secondary);
+    margin: 1%;
+    font-size: 1rem;
+    align-items: center;
+    padding-left: 5%;
 };
